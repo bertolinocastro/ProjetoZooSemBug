@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="shutterstock_222618097" size="738.000000 415.000000" />
+    <ImageTarget name="lighthouse_beacon_light_warning-512" size="512.000000 512.000000" />
+    <ImageTarget name="stadium" size="660.000000 660.000000" />
+    <ImageTarget name="stadium1" size="648.000000 660.000000" />
+  </Tracking>
+</QCARConfig>
