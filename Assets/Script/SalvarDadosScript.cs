@@ -25,7 +25,9 @@ public class SalvarDadosScript : MonoBehaviour {
 
     public Text teste;
     
-    private string filePath;
+    private string filePath, temp;
+
+
 	// Use this for initialization
 	void Awake () {
 		if(salvar == null)
@@ -39,17 +41,21 @@ public class SalvarDadosScript : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         filePath = Application.persistentDataPath + Path.DirectorySeparatorChar + "info.dat";
-        
-	}
+        temp = Application.persistentDataPath + Path.DirectorySeparatorChar + "temp.dat";
+    }
 	
 	public void SalvarDados(DadosRelatorio dados)
     {
         if (File.Exists(filePath))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream fileadd = new FileStream(filePath, FileMode.Append);
 
-            //DadosSalvar dsAtual = (DadosSalvar)bf.Deserialize(fileadd);
+            FileStream fileadd = new FileStream(filePath, FileMode.Open);
+            FileStream arqTemp = new FileStream(temp, FileMode.Create);
+
+            DadosSalvar dsAtual = (DadosSalvar)bf.Deserialize(fileadd);
+
+            
 
             /*
             DadosSalvar dnovos = new DadosSalvar();
@@ -65,16 +71,25 @@ public class SalvarDadosScript : MonoBehaviour {
             dnovos.tempo.Add(ds.tempo);
             dnovos.tempo.Add(dados.getTempo());
             */
-            DadosSalvar dsAtual = new DadosSalvar();
+
+            //DadosSalvar dsAtual = new DadosSalvar();
             
             dsAtual.nickname = dados.getNickName();
             dsAtual.data.Add(dados.getData());
             dsAtual.pontuacao.Add(dados.getPontuacao());
             dsAtual.tempo.Add(dados.getTempo());
             
-            bf.Serialize(fileadd, dsAtual);
-            
+
+            bf.Serialize(arqTemp, dsAtual);
             fileadd.Close();
+            arqTemp.Close();
+            if (File.Exists(temp))
+            {
+                Debug.Log("Temp existe vai deletar o arquvio e criar outro");
+                File.Delete(filePath);
+                File.Move(temp, filePath);
+            }
+            
             Debug.Log("Funcionou a Atualização");
             
         }
@@ -106,10 +121,10 @@ public class SalvarDadosScript : MonoBehaviour {
 
             DadosSalvar ds =  (DadosSalvar) bf.Deserialize(file);
             file.Close();
-            Debug.Log(ds.data.Count);
+            Debug.Log("Data "+ds.data.Count+"pontuação "+ ds.pontuacao[0]);
             for(int i = 0;i < ds.data.Count; i++)
             {
-                teste.text = "Nome:" + ds.nickname + "\nPontuação:" + ds.pontuacao[i] + "\nTempo:" + ds.tempo[i];
+                teste.text += "Nome:" + ds.nickname + " Pontuação:" + ds.pontuacao[i] + " Tempo:" + ds.tempo[i]+"\n";
             }
             
         }
@@ -129,7 +144,7 @@ public class SalvarDadosScript : MonoBehaviour {
         SalvarDados(ds);
         Debug.Log("Gerou");
     }
-    void Update()
+    void Start()
     {
         CarregaDados();
     }
