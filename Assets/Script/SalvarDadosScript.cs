@@ -40,10 +40,15 @@ public class SalvarDadosScript : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
 
-        filePath = Application.persistentDataPath + Path.DirectorySeparatorChar + "info.dat";
+        CriarPath("info");
         temp = Application.persistentDataPath + Path.DirectorySeparatorChar + "temp.dat";
     }
 	
+    public void CriarPath(string nome)
+    {
+        filePath = Application.persistentDataPath + Path.DirectorySeparatorChar + nome+".dat";
+    }
+
 	public void SalvarDados(DadosRelatorio dados)
     {
         if (File.Exists(filePath))
@@ -114,6 +119,7 @@ public class SalvarDadosScript : MonoBehaviour {
 
     public void CarregaDados()
     {
+        teste.text = "";
         if (File.Exists(filePath))
         {
             BinaryFormatter bf = new BinaryFormatter();
