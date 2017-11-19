@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 132661462}
   - component: {fileID: 132661461}
   m_Layer: 0
-  m_Name: cow
+  m_Name: Floresta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,10 +551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: cow
+  mTrackableName: floresta
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/ZooRehab.xml
+  mDataSetPath: Vuforia/zoo.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -566,8 +566,8 @@ MonoBehaviour:
   mAutoSetOccluderFromTargetSize: 0
   mAspectRatio: 1
   mImageTargetType: 0
-  mWidth: 10
-  mHeight: 10
+  mWidth: 210
+  mHeight: 210
 --- !u!23 &132661467
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -609,8 +609,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132661460}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2, y: -1, z: 26.59}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -0.2, y: -1, z: 694}
+  m_LocalScale: {x: 210, y: 210, z: 210}
   m_Children:
   - {fileID: 1161106149}
   - {fileID: 1429974394}
@@ -629,8 +629,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 353029078}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2, y: -1, z: 26.59}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -0.2, y: -1, z: 694}
+  m_LocalScale: {x: 210, y: 210, z: 210}
   m_Children:
   - {fileID: 1866152031}
   - {fileID: 1109609448}
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 353029080}
   - component: {fileID: 353029079}
   m_Layer: 0
-  m_Name: lion
+  m_Name: Neve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,10 +820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: lion
+  mTrackableName: neve2
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/ZooRehab.xml
+  mDataSetPath: Vuforia/zoo.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -835,8 +835,8 @@ MonoBehaviour:
   mAutoSetOccluderFromTargetSize: 0
   mAspectRatio: 1
   mImageTargetType: 0
-  mWidth: 10
-  mHeight: 10
+  mWidth: 210
+  mHeight: 210
 --- !u!23 &353029085
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1780,7 +1780,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: turtleMaterial
+  m_Name: florestaMaterial
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -1797,7 +1797,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8c7fa145124e444b9958f867f838715a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b7b1fe323174d62aa49e6d19184e4a9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2711,7 +2711,7 @@ GameObject:
   - component: {fileID: 1202377106}
   - component: {fileID: 1202377105}
   m_Layer: 0
-  m_Name: turtle
+  m_Name: Deserto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2799,10 +2799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: turtle
+  mTrackableName: deserto5
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/ZooRehab.xml
+  mDataSetPath: Vuforia/zoo.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -2812,10 +2812,10 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 1
+  mAspectRatio: 0.69937366
   mImageTargetType: 0
-  mWidth: 10
-  mHeight: 10
+  mWidth: 210
+  mHeight: 146.86847
 --- !u!23 &1202377111
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3658,8 +3658,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202377104}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2, y: -1, z: 26.59}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -0.2, y: -1, z: 694}
+  m_LocalScale: {x: 210, y: 210, z: 210}
   m_Children:
   - {fileID: 574374655}
   - {fileID: 631458904}

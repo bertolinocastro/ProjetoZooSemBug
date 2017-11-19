@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Vuforia;
@@ -66,10 +67,12 @@ public class InGameGMScript : MonoBehaviour
 		// turtle -> lion -> cow -> turtle
 
 		// TODO: Deletar quando implementar o substituto -------
-		List<int> x = new List<int>(); x.Add(0); x.Add(1); x.Add(2); x.Add(0);
-		salvador.SalvarCircuito(x);
+		aleatorizarCircuito();
 
-		List<string> y = new List<string> (); y.Add ("Tartaruga"); y.Add ("Leão");y.Add ("Vaca");
+		List<string> y = new List<string> ();// y.Add ("Tartaruga"); y.Add ("Leão");y.Add ("Vaca");
+		foreach(var i in listaIMTargetScript.lista){
+			y.Add (i.name);
+		}
 		salvador.SalvarNomesMarcadores (y);
 		// FIM: Deletar quando implementar o substituto ------
 
@@ -175,6 +178,16 @@ public class InGameGMScript : MonoBehaviour
 			}
 		}
 		
+	}
+
+	void aleatorizarCircuito(){
+		System.Random ra = new System.Random ();
+		List<int> x = new List<int>();
+		for (int i = 0; i < 5; ++i) {
+			x.Add (ra.Next(0,listaIMTargetScript.lista.Count));
+		}
+
+		salvador.SalvarCircuito(x);
 	}
 
 	void criaFrisbe(){

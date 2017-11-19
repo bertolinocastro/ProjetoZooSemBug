@@ -135,6 +135,7 @@
      <None Include="Assets\Script\StreamingAssets\Vuforia\ZooRehab.xml" />
      <None Include="Assets\Vuforia\Shaders\ClippingMask.shader" />
      <None Include="Assets\Vuforia\Shaders\BrightTexture.shader" />
+     <None Include="Assets\StreamingAssets\Vuforia\zoo.xml" />
      <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
      <None Include="Assets\Resources\textosTutorial\falasCalibragem.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
