@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scene/ingame.unity
     guid: fb56ff16f85539a4a88a673828e9dd8f
-  - enabled: 1
+  - enabled: 0
     path: Assets/scene/calibragem.unity
     guid: f63d3f6ba26286c4aac7e673c04e180a
   - enabled: 1

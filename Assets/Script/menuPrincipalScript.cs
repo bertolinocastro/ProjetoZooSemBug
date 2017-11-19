@@ -13,6 +13,7 @@ public class menuPrincipalScript : MonoBehaviour {
 	public Button canvasBtn;
 
 	public GameObject placa;
+	public Text nick;
 	public GameObject panda;
 
 	public Text textCanvas;
@@ -141,8 +142,10 @@ public class menuPrincipalScript : MonoBehaviour {
 	}
 
 	private void checaNick(){
-		if(salvador.leNick() == null){
+		if (salvador.leNick () == null) {
 			SceneManager.LoadScene ("tutorial");
+		} else {
+			nick.text = salvador.leNick ();
 		}
 	}
 
@@ -159,7 +162,7 @@ public class menuPrincipalScript : MonoBehaviour {
 
 	public void Calibrar()
 	{
-		SceneManager.LoadScene("calibragem");
+		SceneManager.LoadScene("usabilidade");
 	}
 	public void Configuracao()
 	{

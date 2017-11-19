@@ -769,7 +769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -73, y: 89.99997}
+  m_AnchoredPosition: {x: -128, y: 89.99997}
   m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136896047
@@ -943,7 +943,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'NickName:'
+  m_Text: 'Nome:'
 --- !u!222 &1372487678
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1053,6 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qtAtivdade: {fileID: 1032304065}
   meAtivdade: {fileID: 1741415804}
+  nick: {fileID: 1136896047}
 --- !u!4 &1391599939
 Transform:
   m_ObjectHideFlags: 0

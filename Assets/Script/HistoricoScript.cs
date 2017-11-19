@@ -12,9 +12,14 @@ public class HistoricoScript : MonoBehaviour {
     string firstJogada = "30/09/2017";
     public Text qtAtivdade;
     public Text meAtivdade;
+	public Text nick;
+
+	private SalvaDadosEntreScenes salvador;
 
     // Use this for initialization
     void Start () {
+		salvador = gameObject.AddComponent<SalvaDadosEntreScenes> ();
+		checaNick ();
         //ResgataPrefs("score");
         //CriarPrefs("score", "1000");
         //HistoricoMedia("teste");
@@ -23,6 +28,14 @@ public class HistoricoScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	private void checaNick(){
+		if (salvador.leNick () == null) {
+			SceneManager.LoadScene ("tutorial");
+		} else {
+			nick.text = salvador.leNick ();
+		}
 	}
 
     //VARIAVEL TIPO SERIA A PONTUACAO,DATA DA ATIVIDADE FEITA,HORA DA ATIVIDADE FEITA

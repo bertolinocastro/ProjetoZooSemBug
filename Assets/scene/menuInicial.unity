@@ -275,6 +275,7 @@ MonoBehaviour:
   botaoJogar: {fileID: 1371852800}
   canvasBtn: {fileID: 1371142443}
   placa: {fileID: 613099356}
+  nick: {fileID: 205539991}
   panda: {fileID: 797367390}
   textCanvas: {fileID: 1039944486}
   falasTutorial: {fileID: 4900000, guid: c3f8ef5958da6c644a8a821567dc6c63, type: 3}
