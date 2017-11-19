@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +26,7 @@ public class MascoteGuiaScript : MonoBehaviour {
 	const string texto4b = " <color=black>de</color> ";
 	const string texto7 = "Parabéns!!! Você concluiu a fase!!!";
 	const string texto8a = "Tempo total de execução da fase ";
-	const string texto8b = "s!\nAproveitamento de ";
+	const string texto8b = "\nAproveitamento de ";
 	const string texto9 = "Infelizmente você ultrapassou o tempo limite :-(\nTente novamente!";
 	// Fim mensagens padrão do Mascote
 
@@ -83,15 +84,20 @@ public class MascoteGuiaScript : MonoBehaviour {
 	public void FinalizarFase(float tempoInicio, float tempoMax){
 
 		float tempoTotal = Mathf.Abs(Time.time - tempoInicio);
+		TimeSpan time = TimeSpan.FromSeconds (tempoTotal);
+		string answer = string.Format("{0:D2}h:{1:D2}m:{2:D2}s", 
+			time.Hours, 
+			time.Minutes, 
+			time.Seconds);
 
 		float porcentagem = ((tempoMax - tempoTotal) / tempoMax * 100);
 		if(porcentagem < 0){
 			balaoFimElogio.text = texto9;
-			balaoFimPontuacao.text = texto8a + (tempoTotal).ToString("0.00") + texto8b + "0%!";
+			balaoFimPontuacao.text = answer + texto8b + "0%!";
 		}
 
 		balaoFimElogio.text = texto7;
-		balaoFimPontuacao.text = texto8a + (tempoTotal).ToString("0.00") + texto8b + porcentagem.ToString("0.00") + "%!";
+		balaoFimPontuacao.text = answer + texto8b + porcentagem.ToString("0.00") + "%!";
 
 		int div = (int) Mathf.Ceil (porcentagem / (100.0f / 3.0f));
 

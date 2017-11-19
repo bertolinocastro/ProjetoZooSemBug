@@ -66,10 +66,10 @@ public class InGameGMScript : MonoBehaviour
 		// turtle -> lion -> cow -> turtle
 
 		// TODO: Deletar quando implementar o substituto -------
-		List<int> x = new List<int>(); x.Add(0); x.Add(2); x.Add(4); x.Add(0);
+		List<int> x = new List<int>(); x.Add(0); x.Add(1); x.Add(2); x.Add(0);
 		salvador.SalvarCircuito(x);
 
-		List<string> y = new List<string> (); y.Add ("Tartaruga"); y.Add ("Rinoceronte"); y.Add ("Leão"); y.Add ("Hipopotamo"); y.Add ("Vaca"); y.Add ("Mula");
+		List<string> y = new List<string> (); y.Add ("Tartaruga"); y.Add ("Leão");y.Add ("Vaca");
 		salvador.SalvarNomesMarcadores (y);
 		// FIM: Deletar quando implementar o substituto ------
 
@@ -139,17 +139,17 @@ public class InGameGMScript : MonoBehaviour
 
 					if (identificaJeb.DobrouBraco ()) {
 						if (identificaJeb.EsticouBraco ()) {
-							if (identificaJeb.DobrouNovamenteBraco ()) {
+							//if (identificaJeb.DobrouNovamenteBraco ()) {
 								frisbeScrpt.Arremessar ();
 								gerenciadorCircuito.AvancarPasso ();
 								mascoteFrente ();
 								if (!gerenciadorCircuito.TemProximo ())
 									mascoteGuia.FinalizaPassos ();
 								tempoParaMarcadores = Time.time + 2.0f;
-							} else {
-								mascoteDobrado ();
-								mascoteGuia.DobrarBracos ();
-							}
+							//} else {
+							//	mascoteDobrado ();
+							//	mascoteGuia.DobrarBracos ();
+							//}
 						} else {
 							mascoteEsticado ();
 							mascoteGuia.EsticarBracos ();
@@ -212,7 +212,7 @@ public class InGameGMScript : MonoBehaviour
 		circuitoImpossivel = true;
 		//print ("Circuito impossivel!");
 	}
-
+	/*
 	private void DEBUGAPONTOSDECALIBRAGEM(){
 		GameObject go1 = GameObject.CreatePrimitive (PrimitiveType.Sphere);
 		GameObject go2 = GameObject.CreatePrimitive (PrimitiveType.Sphere);
@@ -242,7 +242,7 @@ public class InGameGMScript : MonoBehaviour
 		);
 
 
-	}
+	}*/
 
 	private Vector3 setaNoScreenSpace(Vector3 i){
 		float myX = i.x;

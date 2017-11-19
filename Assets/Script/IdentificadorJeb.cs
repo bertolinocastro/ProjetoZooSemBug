@@ -16,6 +16,7 @@ public class IdentificadorJeb : MonoBehaviour {
 	private float dimensaoMin;
 
 	private float tempoParaDelay = 0.0f;
+	private float gap = 1.0f;
 
 	private float precisao = 0.05f;
 
@@ -34,7 +35,6 @@ public class IdentificadorJeb : MonoBehaviour {
 
 		messenger = gameObject.AddComponent<MessengerScript> ();
 		messenger.InsereRect (new Rect(0.0f, Screen.height*0.70f, Screen.width, Screen.height*0.3f));
-		DEFINIRPRECISAOCOMSCREEN ();
 	}
 	
 	// Update is called once per frame
@@ -96,10 +96,10 @@ public class IdentificadorJeb : MonoBehaviour {
 	}
 
 	public bool EsticouBraco(){
-		if (checaEsticado)
-			return true;
+		//if (checaEsticado)
+		//	return true;
 
-		if (tempoParaDelay + 1.5f > Time.time || !checaDobrado)
+		if (tempoParaDelay + gap > Time.time || !checaDobrado)
 			return false;
 
 		float dist = Vector3.Distance (cantoSE,cantoID);
@@ -108,7 +108,7 @@ public class IdentificadorJeb : MonoBehaviour {
 		bool retorno = estaEntre (dist, dimensaoMax, precisao);//dist >= dimensaoMax - precisao && dist < dimensaoMax + precisao;
 		if (retorno) {
 			tempoParaDelay = Time.time;
-			checaEsticado = true;
+			checaDobrado = false;
 		}
 		 
 		return  retorno;
@@ -118,7 +118,7 @@ public class IdentificadorJeb : MonoBehaviour {
 		if (checaDobraEst)
 			return true;
 
-		if (tempoParaDelay + 1.5f > Time.time || !checaDobrado || !checaEsticado)
+		if (tempoParaDelay + gap > Time.time || !checaDobrado || !checaEsticado)
 			return false;
 		
 		float dist = Vector3.Distance (cantoSE,cantoID);
@@ -180,22 +180,4 @@ public class IdentificadorJeb : MonoBehaviour {
 			a4 +
 			"</color>";*/
 	}
-
-	void DEFINIRPRECISAOCOMSCREEN (){
-		/*a1 = cam.ScreenToWorldPoint(new Vector3(0, 0, 1));
-		a2 = cam.ScreenToWorldPoint (new Vector3(1, 1, 1));*/
-		a1 = new Vector2 (0, 0);
-		a2 = new Vector2 (Screen.width, Screen.height);
-
-		print (a1);
-		print (a2);
-	}
-
-	public void INSERExyzCANTOS(Vector3 seD, Vector3 idD, Vector3 seE, Vector3 idE){
-	/*	a1 = seD;
-		a2 = idD;
-		a3 = seE;
-		a4 = idE;*/
-	}
-
 }
