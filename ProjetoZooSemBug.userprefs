@@ -1,12 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\InGameGMScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\frisbeScript.cs">
     <Files>
-      <File FileName="Assets\Script\menuPrincipalScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\SalvaDadosEntreScenes.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\UsabilidadeGameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\textosTutorial\falasCalibragem.txt" Line="1" Column="1" />
-      <File FileName="Assets\Script\InGameGMScript.cs" Line="185" Column="33" />
+      <File FileName="Assets\Script\InGameGMScript.cs" Line="209" Column="2" />
+      <File FileName="Assets\Script\frisbeScript.cs" Line="43" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

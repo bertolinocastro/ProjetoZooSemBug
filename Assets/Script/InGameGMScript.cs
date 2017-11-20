@@ -37,6 +37,8 @@ public class InGameGMScript : MonoBehaviour
 	private GameObject frisbeGO;
 	private frisbeScript frisbeScrpt;
 
+	public GameObject[] alimentos;
+
 	private bool exitBtn = false;
 	private bool circuitoImpossivel = false;
 
@@ -182,16 +184,21 @@ public class InGameGMScript : MonoBehaviour
 
 	void aleatorizarCircuito(){
 		System.Random ra = new System.Random ();
-		List<int> x = new List<int>();
+		List<int> x = new List<int>(); int last = -1, act;
 		for (int i = 0; i < 5; ++i) {
-			x.Add (ra.Next(0,listaIMTargetScript.lista.Count));
+			while(last == (act = ra.Next(0,listaIMTargetScript.lista.Count)));
+			x.Add (act);
+			last = act;
 		}
 
 		salvador.SalvarCircuito(x);
 	}
 
 	void criaFrisbe(){
-		frisbeGO = Instantiate (frisbe,Vector3.zero, Quaternion.identity) as GameObject;
+		System.Random rd = new System.Random ();
+		int id = rd.Next (0, alimentos.Length);
+		frisbeGO = Instantiate (alimentos[id],Vector3.zero, Quaternion.identity) as GameObject;
+		frisbeGO = frisbeGO.transform.GetChild (0).gameObject;
 		frisbeScrpt = frisbeGO.GetComponent<frisbeScript> ();
 		frisbeScrpt.cam = cam;
 	}
