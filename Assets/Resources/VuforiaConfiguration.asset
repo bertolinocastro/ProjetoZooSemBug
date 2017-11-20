@@ -14,7 +14,7 @@ MonoBehaviour:
   vuforia:
     vuforiaLicenseKey: ARWYiTX/////AAAAGdaOD/tEk0gFrM9mpd+RdotjZUNiPNy9mCbl3bwZbLFdTTHDl1SvH8fZaulJssoZN8fnDGU3Ex037S44L2CMZFPr0S1t5Cfj7st9+vctkFlz5h4nBvjSevbDrnRIMtSYnrB54e4JoMdumVW+0eMZfCpMYq4i8qhCaWt9K4c8lnc1B6dZhuMUGubu5GZaHL3HMxbipNdbaCPt1otACI9McBe2PgXa1QtkNwQJb0s8WY15Ie4BZdTg2RZ6rlZfLFyWbhdcdZsR88kwLcvxP4lr/qcui+zPW5AGTqC3QzpNQjCXqBm0FE43N1PMbnuIoAaobToAWxLTT/cszJXtOgC1CDS68zXxR9OOGHom8yjR/Mx2
     delayedInitialization: 0
-    cameraDeviceModeSetting: -2
+    cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
@@ -44,8 +44,10 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
+    - ZooRehab
     - zoo
     dataSetsToActivate:
+    - ZooRehab
     - zoo
   videoBackground:
     clippingMode: 0

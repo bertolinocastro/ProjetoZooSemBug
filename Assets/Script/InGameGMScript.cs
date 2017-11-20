@@ -165,6 +165,7 @@ public class InGameGMScript : MonoBehaviour
 					}
 				} else {
 					mascoteGuia.ApontarMarcador (gerenciadorCircuito.MarcadorAtual ());
+					mascoteFrente ();
 				}
 			} else {
 				if(!estaFinalizado){
