@@ -136,6 +136,9 @@ public class InGameGMScript : MonoBehaviour
 					identificaJeb.InsereImTarget (imTarget.gameObject);
 					criaFrisbe ();
 					atualizaAlvo (imTarget.GetChild(imTarget.childCount-1).gameObject);
+					// Resetando a posição do marcador para impedir nova identificação de dobradura // ATUALIZEI
+					if(ultimoMarcador >= 0)// ATUALIZEI
+						listaIMTargetScript.Get(ultimoMarcador).position = Vector3.zero;// ATUALIZEI
 					ultimoMarcador = marcadorAct;
 				}
 				if (imDetector.isFound) {

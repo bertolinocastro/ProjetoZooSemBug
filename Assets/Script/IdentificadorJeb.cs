@@ -46,6 +46,7 @@ public class IdentificadorJeb : MonoBehaviour {
 
 	public void InsereImTarget(GameObject im){
 		imTarget = im;
+		tempoParaDelay = Time.time + 1.0f;
 	}
 
 	public void InsereCamera(Camera c){
