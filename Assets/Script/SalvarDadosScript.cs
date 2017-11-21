@@ -20,6 +20,7 @@ public class SalvarDadosScript : MonoBehaviour {
 
     public static SalvarDadosScript salvar;
 
+    private DadosSalvar dadosCarregados;
     
 
 
@@ -43,7 +44,14 @@ public class SalvarDadosScript : MonoBehaviour {
         CriarPath("info");
         temp = Application.persistentDataPath + Path.DirectorySeparatorChar + "temp.dat";
     }
-	
+
+    // Use this for initialization
+    void Start()
+    {
+        //dadosCarregados = new List<DadosSalvar>();
+        //CarregaDados();
+    }
+
     public void CriarPath(string nome)
     {
         filePath = Application.persistentDataPath + Path.DirectorySeparatorChar + nome+".dat";
@@ -119,21 +127,28 @@ public class SalvarDadosScript : MonoBehaviour {
 
     public void CarregaDados()
     {
-        teste.text = "";
+        //teste.text = "";
         if (File.Exists(filePath))
         {
+            dadosCarregados = new DadosSalvar();
+            Debug.Log("Entrou no if");
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(filePath, FileMode.Open);
 
             DadosSalvar ds =  (DadosSalvar) bf.Deserialize(file);
             file.Close();
+
+            /*
             Debug.Log("Data "+ds.data.Count+"pontuação "+ ds.pontuacao[0]);
+            
             for(int i = 0;i < ds.data.Count; i++)
             {
                 teste.text += "Nome:" + ds.nickname + " Pontuação:" + ds.pontuacao[i] + " Tempo:" + ds.tempo[i]+"\n";
             }
+            */
             
-        }
+            dadosCarregados =ds ;
+        }        
     }
 
     public void GerarDados()
@@ -150,8 +165,9 @@ public class SalvarDadosScript : MonoBehaviour {
         SalvarDados(ds);
         Debug.Log("Gerou");
     }
-    void Start()
+    
+    public DadosSalvar getDadosCarregados()
     {
-        CarregaDados();
+        return dadosCarregados;
     }
 }

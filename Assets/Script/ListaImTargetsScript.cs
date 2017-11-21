@@ -15,6 +15,7 @@ public class ListaImTargetsScript : MonoBehaviour {
 		//lista = Listar ();
 		foreach(Transform go in lista){
 			go.gameObject.SetActive (false);
+            //go.gameObject.GetComponent<MeshRenderer>().enabled = false;
 		}
 		ativaTarget (0); // Ativando o primeiro marcador do circuito
 	}
@@ -45,8 +46,10 @@ public class ListaImTargetsScript : MonoBehaviour {
 
 	private void ativaTarget(int index){
 		lista[lastActive].gameObject.SetActive(false);
-		lista[index].gameObject.SetActive(true);
-		lastActive = index;
+        //lista[lastActive].gameObject.GetComponent<MeshRenderer>().enabled = false;
+        lista[index].gameObject.SetActive(true);
+        //lista[index].gameObject.GetComponent<MeshRenderer>().enabled = true; 
+        lastActive = index;
 	}
 
 	public ReadTarget LerReadTarget(int index){
