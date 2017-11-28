@@ -44,9 +44,11 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
+    - VilaAnimal
     - ZooRehab
     - zoo
     dataSetsToActivate:
+    - VilaAnimal
     - ZooRehab
     - zoo
   videoBackground:

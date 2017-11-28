@@ -59,6 +59,7 @@
      <None Include="Assets\link.xml" />
      <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
+     <None Include="Assets\StreamingAssets\Vuforia\VilaAnimal.xml" />
      <None Include="Assets\Vuforia\Shaders\RenderVideoBackground.shader" />
      <None Include="Assets\StreamingAssets\Vuforia\zoo.xml" />
      <None Include="Assets\readme_SDK.txt" />

@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Text;
 
 [Serializable]
 public class DadosSalvar
@@ -50,6 +51,11 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         //dadosCarregados = new List<DadosSalvar>();
         //CarregaDados();
+        DadosSalvar dados = new DadosSalvar();
+        dados.nickname = "teste";
+        dados.pontuacao.Add(250);
+        dados.pontuacao.Add(550);
+        GerarJson(dados);
     }
 
     public void CriarPath(string nome)
@@ -128,6 +134,8 @@ public class SalvarDadosScript : MonoBehaviour {
     public void CarregaDados()
     {
         //teste.text = "";
+        Debug.Log("Entrou no Carregar dados");
+        Debug.Log("Caminho "+filePath);
         if (File.Exists(filePath))
         {
             dadosCarregados = new DadosSalvar();
@@ -147,7 +155,7 @@ public class SalvarDadosScript : MonoBehaviour {
             }
             */
             
-            dadosCarregados =ds ;
+            dadosCarregados = ds ;
         }        
     }
 
@@ -155,8 +163,13 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         System.Random random = new System.Random();
         DadosRelatorio ds = new DadosRelatorio();
-
-        ds.setNickName("teste");
+        if (PlayerPrefs.HasKey("nickName"))
+        {
+            ds.setNickName(PlayerPrefs.GetString("nickName"));
+        }else
+        {
+            ds.setNickName("Sem nome :(");
+        }        
         int pont = random.Next(1, 999);
         int temp = random.Next(1, 60);
         ds.setPontuacao((pont));
@@ -169,5 +182,45 @@ public class SalvarDadosScript : MonoBehaviour {
     public DadosSalvar getDadosCarregados()
     {
         return dadosCarregados;
+    }
+
+    public void EnvioPost(string json)
+    {
+        if(json != null)
+        {
+            string url = "127.0.0.1/MyProject/CrudPOO/";
+            Hashtable headers = new Hashtable();
+            headers.Add("Content-Type", "application/json");
+            byte[] corpo = Encoding.UTF8.GetBytes(json);
+
+            //WWW www = new WWW(url, corpo, headers);
+            WWW www = new WWW(url, corpo);
+            Debug.Log("www " + www);
+            StartCoroutine("PostdataEnumerator", www);
+        }
+    }
+
+    IEnumerator PostdataEnumerator(WWW www)
+    {
+        yield return www;
+        if (www.error != null)
+        {
+            Debug.Log("Data Submitted");
+        }
+        else
+        {
+            Debug.Log("Erro:"+www.error);
+        }
+    }
+
+    public void GerarJson(DadosSalvar dados)
+    {
+        if(dados != null)
+        {
+            string json = JsonUtility.ToJson(dados);
+            EnvioPost(json);
+        }
+        
+        
     }
 }

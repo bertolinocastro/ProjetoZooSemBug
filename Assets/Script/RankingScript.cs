@@ -15,7 +15,7 @@ public class RankingScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //gameManager.GetComponent<SalvarDadosScript>();
-        printaTela();
+        //printaTela();
 	}
 	
 	// Update is called once per frame
@@ -34,47 +34,50 @@ public class RankingScript : MonoBehaviour {
         gameManager.GetComponent<SalvarDadosScript>().CarregaDados();
         
         DadosSalvar dadosG = gameManager.GetComponent<SalvarDadosScript>().getDadosCarregados();
-        int count = dadosG.pontuacao.Count;
-        System.Random random = new System.Random();
-
-        //Pega o ponto do paciente e adiciona a uma variavel
-        for (int i = 0; i < count; i++)
+        if(dadosG != null)
         {
-            auxPont += (float)dadosG.pontuacao[i];
-        }
+            int count = dadosG.pontuacao.Count;
+            System.Random random = new System.Random();
 
-        DadosRelatorio dr = new DadosRelatorio();
-        dr.setNickName(dadosG.nickname);
-        dr.setPontuacao(auxPont);
-        dr.setTempo(60);
-        pontFake.Add(dr);
-        
-        for (int y = 0; y < 3; y++)
-        {
-            int pontGerado = random.Next(1, 10);
-            int tempoGerado = random.Next(10, 60);
-            int nomesG = random.Next(0, 19);
-            //Positivo
-            auxP = auxPont + pontGerado;
-            DadosRelatorio drP = new DadosRelatorio();
-            drP.setNickName(nomes[nomesG]);
-            drP.setPontuacao(auxP);
-            drP.setTempo(tempoGerado);
-            pontFake.Add(drP);
-            //Negativo
-
-            if (auxPont > 0 && auxPont > pontGerado)
+            //Pega o ponto do paciente e adiciona a uma variavel
+            for (int i = 0; i < count; i++)
             {
-                nomesG = random.Next(0, 19);
-                DadosRelatorio drN = new DadosRelatorio();
-                auxN = auxPont - pontGerado;
-                drN.setNickName(nomes[nomesG]);
-                drN.setPontuacao(auxN);
-                drN.setTempo(tempoGerado % 2 == 0 ? tempoGerado * 1.2f : tempoGerado * 1.3f);
-                pontFake.Add(drN);
+                auxPont += (float)dadosG.pontuacao[i];
             }
-            auxPont = auxP;
-        }
+
+            DadosRelatorio dr = new DadosRelatorio();
+            dr.setNickName(dadosG.nickname);
+            dr.setPontuacao(auxPont);
+            dr.setTempo(60);
+            pontFake.Add(dr);
+
+            for (int y = 0; y < 3; y++)
+            {
+                int pontGerado = random.Next(1, 10);
+                int tempoGerado = random.Next(10, 60);
+                int nomesG = random.Next(0, 19);
+                //Positivo
+                auxP = auxPont + pontGerado;
+                DadosRelatorio drP = new DadosRelatorio();
+                drP.setNickName(nomes[nomesG]);
+                drP.setPontuacao(auxP);
+                drP.setTempo(tempoGerado);
+                pontFake.Add(drP);
+                //Negativo
+
+                if (auxPont > 0 && auxPont > pontGerado)
+                {
+                    nomesG = random.Next(0, 19);
+                    DadosRelatorio drN = new DadosRelatorio();
+                    auxN = auxPont - pontGerado;
+                    drN.setNickName(nomes[nomesG]);
+                    drN.setPontuacao(auxN);
+                    drN.setTempo(tempoGerado % 2 == 0 ? tempoGerado * 1.2f : tempoGerado * 1.3f);
+                    pontFake.Add(drN);
+                }
+                auxPont = auxP;
+            }
+        }       
         
 
     }

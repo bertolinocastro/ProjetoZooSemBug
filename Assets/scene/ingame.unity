@@ -468,10 +468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: floresta
+  mTrackableName: 02
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/zoo.xml
+  mDataSetPath: Vuforia/VilaAnimal.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -481,7 +481,7 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 1
+  mAspectRatio: 0.70625
   mImageTargetType: 0
   mWidth: 210
   mHeight: 210
@@ -734,10 +734,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: neve
+  mTrackableName: 01
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/zoo.xml
+  mDataSetPath: Vuforia/VilaAnimal.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -747,7 +747,7 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 1
+  mAspectRatio: 0.6588235
   mImageTargetType: 0
   mWidth: 210
   mHeight: 210
@@ -1648,7 +1648,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: florestaMaterial
+  m_Name: Cartoon-nature-scenery-with-animal-vectors-06Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -1666,7 +1666,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 42f23e1ccd9d4d8c9c5140c609b872f9, type: 3}
+        m_Texture: {fileID: 2800000, guid: d2b040a5996a4e779f4207d1d0c94ff6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2670,10 +2670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: deserto
+  mTrackableName: Cartoon-nature-scenery-with-animal-vectors-06
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/zoo.xml
+  mDataSetPath: Vuforia/VilaAnimal.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -2683,7 +2683,7 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 0.69937366
+  mAspectRatio: 0.854
   mImageTargetType: 0
   mWidth: 210
   mHeight: 146.86847
@@ -3490,7 +3490,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0, z: 0.34968683}
+      m_Extent: {x: 0.5, y: 0, z: 0.427}
   m_Shapes:
     vertices: []
     shapes: []
@@ -3542,7 +3542,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 000000bf00000000270ab3be000000000000803f000000000000000000000000000000bf00000000270ab33e000000000000803f00000000000000000000803f0000003f00000000270ab3be000000000000803f000000000000803f000000000000003f00000000270ab33e000000000000803f000000000000803f0000803f
+    _typelessdata: 000000bf00000000be9fdabe00000000ffff7f3f000000000000000000000000000000bf00000000be9fda3e00000000ffff7f3f00000000000000000000803f0000003f00000000be9fdabe00000000ffff7f3f000000000000803f000000000000003f00000000be9fda3e00000000ffff7f3f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0

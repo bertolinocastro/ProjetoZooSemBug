@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="01" size="210.000000 138.352936" />
+    <ImageTarget name="Cartoon-nature-scenery-with-animal-vectors-06" size="210.000000 179.339996" />
+    <ImageTarget name="02" size="210.000000 148.312500" />
+  </Tracking>
+</QCARConfig>
