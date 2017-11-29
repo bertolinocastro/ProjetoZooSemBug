@@ -188,13 +188,13 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         if(json != null)
         {
-            string url = "127.0.0.1/MyProject/CrudPOO/";
-            Hashtable headers = new Hashtable();
+            string url = "www.127.0.0.1/MyProject/CrudPOO/index.php";
+            Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Content-Type", "application/json");
             byte[] corpo = Encoding.UTF8.GetBytes(json);
 
-            //WWW www = new WWW(url, corpo, headers);
-            WWW www = new WWW(url, corpo);
+            WWW www = new WWW(url, corpo, headers);
+            //WWW www = new WWW(url, corpo);
             Debug.Log("www " + www);
             StartCoroutine("PostdataEnumerator", www);
         }
@@ -205,7 +205,7 @@ public class SalvarDadosScript : MonoBehaviour {
         yield return www;
         if (www.error != null)
         {
-            Debug.Log("Data Submitted");
+            Debug.Log("Dados enviados");
         }
         else
         {

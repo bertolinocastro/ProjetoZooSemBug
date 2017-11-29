@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 132661462}
   - component: {fileID: 132661461}
   m_Layer: 0
-  m_Name: Floresta
+  m_Name: Rio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
   mAspectRatio: 0.70625
   mImageTargetType: 0
   mWidth: 210
-  mHeight: 210
+  mHeight: 148.3125
 --- !u!23 &132661467
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
   mAspectRatio: 0.6588235
   mImageTargetType: 0
   mWidth: 210
-  mHeight: 210
+  mHeight: 138.35294
 --- !u!23 &353029085
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1648,7 +1648,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Cartoon-nature-scenery-with-animal-vectors-06Material
+  m_Name: 02Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -1666,7 +1666,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: d2b040a5996a4e779f4207d1d0c94ff6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7f7fb80eb43e41df98f56ff297fa2b63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 1202377106}
   - component: {fileID: 1202377105}
   m_Layer: 0
-  m_Name: Deserto
+  m_Name: Floresta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2686,7 +2686,7 @@ MonoBehaviour:
   mAspectRatio: 0.854
   mImageTargetType: 0
   mWidth: 210
-  mHeight: 146.86847
+  mHeight: 179.34
 --- !u!23 &1202377111
 MeshRenderer:
   m_ObjectHideFlags: 0
