@@ -12,9 +12,11 @@ public class DadosSalvar
 {
 
     public string nickname;
-    public ArrayList pontuacao = new ArrayList();
-    public ArrayList tempo = new ArrayList();
-    public ArrayList data = new ArrayList();
+    public string teste;
+    public int idade;
+    public List<float> pontuacao = new List<float>();
+    public List<float> tempo = new List<float>();
+    public List<string> data = new List<string>();
 }
 
 public class SalvarDadosScript : MonoBehaviour {
@@ -26,7 +28,7 @@ public class SalvarDadosScript : MonoBehaviour {
 
 
     public Text teste;
-    
+    public string url = "";
     private string filePath, temp;
 
 
@@ -53,6 +55,8 @@ public class SalvarDadosScript : MonoBehaviour {
         //CarregaDados();
         DadosSalvar dados = new DadosSalvar();
         dados.nickname = "teste";
+        dados.teste = "olá mundo";
+        dados.idade = 12;
         dados.pontuacao.Add(250);
         dados.pontuacao.Add(550);
         GerarJson(dados);
@@ -183,27 +187,36 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         return dadosCarregados;
     }
-
+    public void EnvioGet(string json)
+    {
+        if (json != null)
+        {
+            url = "http://127.0.0.1/MyProject/Json/index.php?enviando=" + json;
+            WWW www = new WWW(url);
+            StartCoroutine("WaitForRequest", www);
+        }
+    }
     public void EnvioPost(string json)
     {
         if(json != null)
         {
-            string url = "www.127.0.0.1/MyProject/CrudPOO/index.php";
+            url = "http://127.0.0.1/MyProject/Json/index.php?enviando";            
+
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Content-Type", "application/json");
             byte[] corpo = Encoding.UTF8.GetBytes(json);
 
+            //Debug.Log("json " + json);
             WWW www = new WWW(url, corpo, headers);
-            //WWW www = new WWW(url, corpo);
-            Debug.Log("www " + www);
-            StartCoroutine("PostdataEnumerator", www);
+            StartCoroutine("WaitForRequest", www);
         }
     }
 
-    IEnumerator PostdataEnumerator(WWW www)
+    IEnumerator WaitForRequest(WWW www)
     {
         yield return www;
-        if (www.error != null)
+        Debug.Log(www.error);
+        if (www.error != null && www.error != "404 Not Found")
         {
             Debug.Log("Dados enviados");
         }
@@ -218,6 +231,7 @@ public class SalvarDadosScript : MonoBehaviour {
         if(dados != null)
         {
             string json = JsonUtility.ToJson(dados);
+            Debug.Log(json);
             EnvioPost(json);
         }
         
