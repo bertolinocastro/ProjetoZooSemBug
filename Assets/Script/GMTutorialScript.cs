@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GMTutorialScript : MonoBehaviour {
 
+	public RectTransform tutorial;
+
 	private string[] msgInstrutor;
 	private List<Vector3> posesInstrutor;
 	public TextAsset textoInstrutorAsset;
@@ -61,7 +63,7 @@ public class GMTutorialScript : MonoBehaviour {
 		backgroudInit ();
 		cenasGrupoInit ();
 		ativaTodosOsTutoriais ();
-	
+		
 		instrutorInit ();
 
 		start = Time.time;
@@ -90,6 +92,7 @@ public class GMTutorialScript : MonoBehaviour {
 
 	private IEnumerator animaInstrutor(){
 		int i = 0;
+		imagemInstrutor.gameObject.SetActive (true);
 		for (;;) {
 			i = i != 0 ? 0 : 1;
 			imagemInstrutor.sprite = instrutorSprites [i];
@@ -103,6 +106,10 @@ public class GMTutorialScript : MonoBehaviour {
 			textInstrutor.text = msgInstrutor [idTextInstrutor++];
 		} else {
 			StopCoroutine ("animaInstrutor");
+			imagemInstrutorRect.transform.SetParent(tutorial);
+			imagemInstrutorRect.transform.SetSiblingIndex (1);
+			imagemInstrutorRect.localPosition = posesInstrutor [0];
+			imagemInstrutorRect.gameObject.SetActive (false);
 			Destroy (modalInstrutor.gameObject);
 			mensagensInit ();
 		}
@@ -162,17 +169,17 @@ public class GMTutorialScript : MonoBehaviour {
 			return;
 		}
 
-		if (!reescrevi && msgAct [subCenaAct - 1].Length >= textLength) {
+		/*if (!reescrevi && msgAct [subCenaAct - 1].Length >= textLength) {
 			subCenaAct--;
 			passaTexto ();
 			reescrevi = true;
 			return;
-		}
+		}*/
 
 		if (subCenaAct > 1) {
 			subCenaAct -= 2;
 			passaTexto ();
-			reescrevi = false;
+			//reescrevi = false;
 		} else {
 			if (cenaAct > 1) {
 				cenaAct -= 2;
@@ -182,7 +189,7 @@ public class GMTutorialScript : MonoBehaviour {
 				passaTexto ();
 				anteriorCena ();
 				cenaAct++;
-				reescrevi = false;
+				//reescrevi = false;
 			}
 		}
 
@@ -227,6 +234,9 @@ public class GMTutorialScript : MonoBehaviour {
 		pular = false;
 		//textoFalas.text = "";
 
+		StopCoroutine("animaInstrutor");
+		imagemInstrutor.gameObject.SetActive (false);
+
 		string frase = msgAct [subCenaAct];
 
 		int end = 0, i = 0;
@@ -248,11 +258,16 @@ public class GMTutorialScript : MonoBehaviour {
 			pular = false;
 			if (end < frase.Length) {
 				textoFalas.text += "...";
+				StartCoroutine("animaInstrutor");
 				while(!pular)
 					yield return new WaitForSeconds (delayEntreLetras);
+				StopCoroutine("animaInstrutor");
+				imagemInstrutor.gameObject.SetActive (false);
 				pular = false;
 			}
 		}while(i < frase.Length);
+
+		StartCoroutine("animaInstrutor");
 
 		subCenaAct++;
 		pular = false;

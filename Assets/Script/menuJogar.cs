@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class menuJogar : MonoBehaviour {
 
+	public RectTransform imagemInstrutorRect;
+	public Image imagemInstrutor;
+	private List<Sprite> instrutorSprites;
+	private float delayPAnimacao = 0.5f;
+
 	private SalvaDadosEntreScenes salvador;
 	public Button botaoVoltar;
 	public Button botaoJogar;
@@ -30,11 +35,28 @@ public class menuJogar : MonoBehaviour {
 	void Start () {
 		salvador = gameObject.AddComponent<SalvaDadosEntreScenes> ();
 		checaTutorial ();
+		inicializaDedao ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	private void inicializaDedao(){
+		instrutorSprites = new List<Sprite> (Resources.LoadAll<Sprite> ("pointerImages/"));
+		imagemInstrutor.sprite = instrutorSprites [0];
+		imagemInstrutorRect.localPosition = new Vector3(-38.0f, 9.0f, 0.0f);
+	}
+
+	private IEnumerator animaDedao(){
+		int i = 0;
+		imagemInstrutorRect.gameObject.SetActive (true);
+		for (;;) {
+			i = i != 0 ? 0 : 1;
+			imagemInstrutor.sprite = instrutorSprites [i];
+			yield return new WaitForSeconds (delayPAnimacao);
+		}
 	}
 
 	private void checaPiscar(){
@@ -76,6 +98,10 @@ public class menuJogar : MonoBehaviour {
 			if (passavel) {
 				checaPiscar ();
 				StartCoroutine ("printaLetras");
+				if(idFala >= msg.Length - 1){
+					imagemInstrutor.color = Color.black;
+					imagemInstrutorRect.localPosition = new Vector3(-252.0f, -59.0f, 0.0f);
+				}
 			} else {
 				pular = true;
 			}
@@ -86,6 +112,9 @@ public class menuJogar : MonoBehaviour {
 		passavel = false;
 		pular = false;
 		//textoFalas.text = "";
+
+		StopCoroutine("animaDedao");
+		imagemInstrutor.gameObject.SetActive (false);
 
 		string frase = msg [idFala];
 
@@ -108,11 +137,16 @@ public class menuJogar : MonoBehaviour {
 			pular = false;
 			if (end < frase.Length) {
 				textCanvas.text += "...";
+				StartCoroutine("animaDedao");
 				while(!pular)
 					yield return new WaitForSeconds (delayEntreLetras);
+				StopCoroutine("animaDedao");
+				imagemInstrutor.gameObject.SetActive (false);
 				pular = false;
 			}
 		}while(i < frase.Length);
+
+		StartCoroutine("animaDedao");
 
 		idFala++;
 		pular = false;

@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class menuPrincipalScript : MonoBehaviour {
 
+	public RectTransform imagemInstrutorRect;
+	public Image imagemInstrutor;
+	private List<Sprite> instrutorSprites;
+	private float delayPAnimacao = 0.5f;
+
 	private SalvaDadosEntreScenes salvador;
 	public GameObject bastao;
 	public GameObject placaUser;
 	public Button botaoJogar;
 	public Button canvasBtn;
+	public Button calibrar;
 
 	public GameObject placa;
 	public Text nick;
@@ -31,18 +37,39 @@ public class menuPrincipalScript : MonoBehaviour {
 	void Awake(){
 		salvador = gameObject.AddComponent<SalvaDadosEntreScenes> ();
 		checaNick ();
+		if (!salvador.tutorialJaVisto ()) {
+			calibrar.interactable = false;
+			botaoJogar.interactable = false;
+		}
 	}
 
 	// Use this for initialization
 	void Start () {
 		checaTutorial ();
 		checaCalibrado ();
+		inicializaDedao ();
 	}
 	
 	// Update is called once per frame
 
 	void Update () {
 		
+	}
+
+	private void inicializaDedao(){
+		instrutorSprites = new List<Sprite> (Resources.LoadAll<Sprite> ("pointerImages/"));
+		imagemInstrutor.sprite = instrutorSprites [0];
+		imagemInstrutorRect.localPosition = new Vector3(-38.0f, 9.0f, 0.0f);
+	}
+
+	private IEnumerator animaDedao(){
+		int i = 0;
+		imagemInstrutorRect.gameObject.SetActive (true);
+		for (;;) {
+			i = i != 0 ? 0 : 1;
+			imagemInstrutor.sprite = instrutorSprites [i];
+			yield return new WaitForSeconds (delayPAnimacao);
+		}
 	}
 
 	private void checaUsuario(){
@@ -96,6 +123,9 @@ public class menuPrincipalScript : MonoBehaviour {
 			if (passavel) {
 				checaUsuario ();
 				checaPiscar ();
+				if(idFala >= msg.Length - 1){
+					imagemInstrutorRect.localPosition = new Vector3(-225.0f, 112.0f, 0.0f);
+				}
 				StartCoroutine ("printaLetras");
 			} else {
 				pular = true;
@@ -107,6 +137,9 @@ public class menuPrincipalScript : MonoBehaviour {
 		passavel = false;
 		pular = false;
 		//textoFalas.text = "";
+
+		StopCoroutine("animaDedao");
+		imagemInstrutor.gameObject.SetActive (false);
 
 		string frase = msg [idFala];
 
@@ -129,11 +162,17 @@ public class menuPrincipalScript : MonoBehaviour {
 			pular = false;
 			if (end < frase.Length) {
 				textCanvas.text += "...";
+				StartCoroutine("animaDedao");
+
 				while(!pular)
 					yield return new WaitForSeconds (delayEntreLetras);
+				StopCoroutine("animaDedao");
+				imagemInstrutor.gameObject.SetActive (false);
 				pular = false;
 			}
 		}while(i < frase.Length);
+
+		StartCoroutine("animaDedao");
 
 		idFala++;
 		pular = false;
@@ -143,7 +182,7 @@ public class menuPrincipalScript : MonoBehaviour {
 
 	private void checaNick(){
 		if (salvador.leNick () == null) {
-			SceneManager.LoadScene ("tutorial");
+			//SceneManager.LoadScene ("tutorial");
 		} else {
 			nick.text = salvador.leNick ();
 		}
@@ -183,4 +222,7 @@ public class menuPrincipalScript : MonoBehaviour {
 		SceneManager.LoadScene("Historico");
 	}
 
+	public void Tutorial(){
+		SceneManager.LoadScene ("tutorial");
+	}
 }

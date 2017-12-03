@@ -1,4 +1,4 @@
-﻿Bem vindo à <color=yellow>Vila Animal</color>!<fala>
+﻿Bem vindo à Vila Animal!<fala>
 Uma reserva ambiental muito especial.
 <cena>
 

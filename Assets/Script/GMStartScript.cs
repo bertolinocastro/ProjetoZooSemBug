@@ -12,15 +12,16 @@ public class GMStartScript : MonoBehaviour {
 	void Start () {
 		salvador = gameObject.AddComponent<SalvaDadosEntreScenes> ();
 		start = Time.time;
+		salvador.setaMenuPrincipalTutorial(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= start + 1.0f) {
-			if (salvador.tutorialJaVisto ())
+			//if (salvador.tutorialJaVisto ())
 				SceneManager.LoadSceneAsync ("menuInicial");
-			else
-				SceneManager.LoadSceneAsync ("tutorial");
+			//else
+			//	SceneManager.LoadSceneAsync ("tutorial");
 		}
 	}
 }
