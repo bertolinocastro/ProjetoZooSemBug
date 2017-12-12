@@ -30,12 +30,21 @@ public class ranking : MonoBehaviour {
     {
         if(urlD.GetComponent<InputField>().text != "" || urlD.GetComponent<InputField>().text != null)
         {
-            //string urlN = urlD.GetComponent<InputField>().text;
+            string urlN = urlD.GetComponent<InputField>().text;
 
-            //GetComponent<SalvarDadosScript>().url = urlN + "/Class/Action/UsuarioAC.php?req=1";
-           
-            //GetComponent<SalvarDadosScript>().GerarJson(dados);
-            //painelNet.SetActive(false);
+            GetComponent<SalvarDadosScript>().url = urlN + "/Class/Action/UsuarioAC.php?req=1";
+
+            DadosSalvar dados = new DadosSalvar();
+            System.Random random = new System.Random();
+            dados.nickname = PlayerPrefs.GetString("nickName");
+            dados.pontuacao.Add(random.Next(1, 10));
+            dados.pontuacao.Add(random.Next(1, 10));
+            dados.tempo.Add(random.Next(1, 60));
+            dados.tempo.Add(random.Next(1, 60));
+            dados.data.Add("10/12/2017");
+            dados.data.Add("11/12/2017");
+            GetComponent<SalvarDadosScript>().GerarJson(dados);
+            painelNet.SetActive(false);
         }
         
     }

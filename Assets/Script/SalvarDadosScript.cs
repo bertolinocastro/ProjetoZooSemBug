@@ -31,7 +31,9 @@ public class SalvarDadosScript : MonoBehaviour {
 
 
 	// Use this for initialization
+
 	void Awake () {
+        /*
 		if(salvar == null)
         {
             salvar = this;
@@ -41,7 +43,7 @@ public class SalvarDadosScript : MonoBehaviour {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-
+        */
         CriarPath("info");
         temp = Application.persistentDataPath + Path.DirectorySeparatorChar + "temp.dat";
     }
@@ -51,16 +53,6 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         //dadosCarregados = new List<DadosSalvar>();
         //CarregaDados();
-        DadosSalvar dados = new DadosSalvar();
-        System.Random random = new System.Random();
-        dados.nickname = PlayerPrefs.GetString("nickName");
-        dados.pontuacao.Add(random.Next(1, 10));
-        dados.pontuacao.Add(random.Next(1, 10));
-        dados.tempo.Add(random.Next(1, 60));
-        dados.tempo.Add(random.Next(1, 60));
-        dados.data.Add("10/12/2017");
-        dados.data.Add("11/12/2017");
-        GerarJson(dados);
     }
 
     public void CriarPath(string nome)
@@ -201,7 +193,7 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         if(json != null)
         {
-            url = "http://vilanimal.epizy.com/Class/Action/UsuarioAC.php?req=1";            
+            //url = "http://vilanimal.epizy.com/Class/Action/UsuarioAC.php?req=1";            
             Debug.Log(url);
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
@@ -226,6 +218,8 @@ public class SalvarDadosScript : MonoBehaviour {
         {
             Debug.Log("Erro:"+www.error);
         }
+        string resuslt = System.Text.Encoding.UTF8.GetString(www.bytes);
+        print("Resultado" + resuslt);
     }
 
     public void GerarJson(DadosSalvar dados)
