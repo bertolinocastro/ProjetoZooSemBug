@@ -12,8 +12,6 @@ public class DadosSalvar
 {
 
     public string nickname;
-    public string teste;
-    public int idade;
     public List<float> pontuacao = new List<float>();
     public List<float> tempo = new List<float>();
     public List<string> data = new List<string>();
@@ -54,11 +52,14 @@ public class SalvarDadosScript : MonoBehaviour {
         //dadosCarregados = new List<DadosSalvar>();
         //CarregaDados();
         DadosSalvar dados = new DadosSalvar();
-        dados.nickname = "teste";
-        dados.teste = "olá mundo";
-        dados.idade = 12;
-        dados.pontuacao.Add(250);
-        dados.pontuacao.Add(550);
+        System.Random random = new System.Random();
+        dados.nickname = PlayerPrefs.GetString("nickName");
+        dados.pontuacao.Add(random.Next(1, 10));
+        dados.pontuacao.Add(random.Next(1, 10));
+        dados.tempo.Add(random.Next(1, 60));
+        dados.tempo.Add(random.Next(1, 60));
+        dados.data.Add("10/12/2017");
+        dados.data.Add("11/12/2017");
         GerarJson(dados);
     }
 
@@ -200,7 +201,8 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         if(json != null)
         {
-            url = "http://127.0.0.1/MyProject/Json/index.php?enviando";            
+            url = "http://vilanimal.epizy.com/Class/Action/UsuarioAC.php?req=1";            
+            Debug.Log(url);
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Content-Type", "application/json");
@@ -216,7 +218,7 @@ public class SalvarDadosScript : MonoBehaviour {
     {
         yield return www;
         Debug.Log(www.error);
-        if (www.error != null && www.error != "404 Not Found")
+        if (www.error == null || www.error != "404 Not Found")
         {
             Debug.Log("Dados enviados");
         }
