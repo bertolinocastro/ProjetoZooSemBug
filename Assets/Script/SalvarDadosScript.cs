@@ -209,8 +209,7 @@ public class SalvarDadosScript : MonoBehaviour {
     IEnumerator WaitForRequest(WWW www)
     {
         yield return www;
-        Debug.Log(www.error);
-        if (www.error == null || www.error != "404 Not Found")
+        if (www.error == null)
         {
             Debug.Log("Dados enviados");
         }
@@ -220,6 +219,9 @@ public class SalvarDadosScript : MonoBehaviour {
         }
         string resuslt = System.Text.Encoding.UTF8.GetString(www.bytes);
         print("Resultado" + resuslt);
+		//foreach (KeyValuePair<string,string> a in www.responseHeaders) {
+		//	print ("Cabeçalhos de resposta " + a.Key +" = " + a.Value );
+		//}
     }
 
     public void GerarJson(DadosSalvar dados)

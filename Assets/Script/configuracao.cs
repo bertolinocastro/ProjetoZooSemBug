@@ -33,8 +33,15 @@ public class configuracao : MonoBehaviour {
 	}
 
 	public void salvaServidor(){
-		salvador.setaServidor (serv.text);
-		print ("Servidor alterado com sucesso!\n" + serv.text);
+		string result = serv.text;
+
+		if (string.IsNullOrEmpty (result))
+			return;
+		
+		if ( result[result.Length - 1] == '/')
+			result = result.Remove (serv.text.Length - 1);
+		salvador.setaServidor (result);
+		print ("Servidor alterado com sucesso!\n" + result);
 	}
 
 	public void clicaAlterarNome(){
