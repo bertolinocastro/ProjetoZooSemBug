@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class InGameGMScript : MonoBehaviour
 {
+	public SalvarDadosScript enviadorDeDados;
+	
 	public Camera cam;
 	public GameObject CanvasInGame;
 	public GameObject CanvasFimGame;
@@ -59,12 +61,14 @@ public class InGameGMScript : MonoBehaviour
 		salvador = gameObject.AddComponent<SalvaDadosEntreScenes> ();
 		mascoteGuia = gameObject.AddComponent<MascoteGuiaScript> ();
 		identificaJeb = gameObject.AddComponent<IdentificadorJeb> ();
+		enviadorDeDados = gameObject.AddComponent<SalvarDadosScript> ();
 	}
 
 	// Use this for initialization
 	void Start () {
 		salvador.setaMenuPrincipalTutorial (false);
 		salvador.tutorialJaVisto (true);
+		salvador.JaHouveStart (true);
 
 		// turtle -> lion -> cow -> turtle
 
@@ -91,6 +95,8 @@ public class InGameGMScript : MonoBehaviour
 		mascoteGuia.InsereBalaoFim (balaoFimPontuacao,balaoFimElogio);
 		mascoteGuia.InsereEstrelas (estrelasGold, estrelasGray);
 		mascoteGuia.InsereNomesMarcadores (salvador.LerNomesMarcadores());
+		mascoteGuia.InsereEnviador (enviadorDeDados);
+		mascoteGuia.url = salvador.leServidor ();
 
 		imDetector = listaIMTargetScript.LerReadTarget (0);
 
@@ -174,7 +180,7 @@ public class InGameGMScript : MonoBehaviour
 				if(!estaFinalizado){
 					CanvasInGame.SetActive (false); CanvasFimGame.SetActive (true);
 					//mascoteGuia.FinalizarFase (tempoDeJogoIni, salvador.LeTempoMaximoFase("####FASEATUAL####"));
-					mascoteGuia.FinalizarFase (tempoDeJogoIni, 85.0f);
+					mascoteGuia.FinalizarFase (tempoDeJogoIni, 120.0f);
 					estaFinalizado = true;
 				}
 			}

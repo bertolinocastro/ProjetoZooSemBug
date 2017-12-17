@@ -192,5 +192,56 @@ public class SalvaDadosEntreScenes : MonoBehaviour
 		return false;
 	}
 	// FIM Códigos para determinar se o menuPrincipal irá executar o modo tutorial
+
+	// Códigos para salvamento do endereço do servidor remoto
+	public void setaServidor(string url){
+		if (!string.IsNullOrEmpty (url)) {
+			PlayerPrefs.SetString ("endereco_server", url);
+			PlayerPrefs.Save ();
+		}
+	}
+	public string leServidor(){
+		if (PlayerPrefs.HasKey ("endereco_server")) {
+			return PlayerPrefs.GetString ("endereco_server");
+		}
+		return null;
+	}
+	// FIM Códigos para salvamento do endereço do servidor remoto
+
+	// Códigos para o nickname
+	public void nickName(string n){
+		if (!string.IsNullOrEmpty (n)) {
+			PlayerPrefs.SetString ("nickName", n);
+			PlayerPrefs.Save ();
+		}
+	}
+	public string nickName(){
+		if (PlayerPrefs.HasKey("nickName")) {
+			return PlayerPrefs.GetString ("nickName");
+		}
+		return null;
+	}
+	// FIM Códigos para o nickname
+
+	// Códigos para primeiro início do programa
+	public bool primeiroStart(){
+		return !PlayerPrefs.HasKey ("first_run");
+	}
+	public void JaHouveStart(bool op){
+		if (op) {
+			PlayerPrefs.SetInt ("first_run", 1);
+		} else {
+			PlayerPrefs.DeleteKey ("first_run");
+		}
+		PlayerPrefs.Save ();
+	}
+	// FIM Códigos para primeiro início do programa
+
+	// Códigos para limpar tudo do sistema
+	public void limpaTudo(){
+		PlayerPrefs.DeleteAll ();
+		PlayerPrefs.Save ();
+	}
+	// FIM Códigos para limpar tudo do sistema
 }
 

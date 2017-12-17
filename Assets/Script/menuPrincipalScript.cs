@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class menuPrincipalScript : MonoBehaviour {
 
+	public GameObject nickPanelGO;
+	public Button prontoBtn;
+	public Text nickText;
+
 	public RectTransform imagemInstrutorRect;
 	public Image imagemInstrutor;
 	private List<Sprite> instrutorSprites;
@@ -97,7 +101,7 @@ public class menuPrincipalScript : MonoBehaviour {
 	}
 
 	private void checaTutorial(){
-		if(salvador.leMenuPrincipalTutorial()){
+		if(/*salvador.leMenuPrincipalTutorial() &&*/ salvador.primeiroStart()){
 			msg = falasTutorial.text.Split (new string[] {"<fala>"}, System.StringSplitOptions.None);
 			desativaTodosBotoes ();
 			placa.SetActive (true);
@@ -181,11 +185,7 @@ public class menuPrincipalScript : MonoBehaviour {
 	}
 
 	private void checaNick(){
-		if (salvador.leNick () == null) {
-			//SceneManager.LoadScene ("tutorial");
-		} else {
-			nick.text = salvador.leNick ();
-		}
+		nick.text = salvador.leNick ();
 	}
 
 	private void checaCalibrado(){

@@ -5,7 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MascoteGuiaScript : MonoBehaviour {
-	
+
+	public SalvarDadosScript enviadorDeDados;
+	public string url;
+
 	private GameObject mascoteGuiador;
 	private List<string> nomesMarcadores;
 	private MessengerScript messenger;
@@ -81,6 +84,10 @@ public class MascoteGuiaScript : MonoBehaviour {
 		balaoMensagem.text = texto7;
 	}
 
+	public void InsereEnviador(SalvarDadosScript s){
+		enviadorDeDados = s;
+	}
+
 	public void FinalizarFase(float tempoInicio, float tempoMax){
 
 		float tempoTotal = Mathf.Abs(Time.time - tempoInicio);
@@ -91,14 +98,13 @@ public class MascoteGuiaScript : MonoBehaviour {
 			time.Seconds);
 
 		float porcentagem = ((tempoMax - tempoTotal) / tempoMax * 100);
-		if(porcentagem < 0){
+		if (porcentagem < 33.3f) {
 			balaoFimElogio.text = texto9;
-			balaoFimPontuacao.text = answer + texto8b + "0%!";
+			balaoFimPontuacao.text = answer + texto8b + "33%!";
+		} else {
+			balaoFimElogio.text = texto7;
+			balaoFimPontuacao.text = answer + texto8b + porcentagem.ToString ("0.00") + "%!";
 		}
-
-		balaoFimElogio.text = texto7;
-		balaoFimPontuacao.text = answer + texto8b + porcentagem.ToString("0.00") + "%!";
-
 		int div = (int) Mathf.Ceil (porcentagem / (100.0f / 3.0f));
 
 		int i = 0;
@@ -112,7 +118,35 @@ public class MascoteGuiaScript : MonoBehaviour {
 			}
 		}
 
+		SalvaStatus(porcentagem, tempoTotal);
+
 		//balaoMensagem.text = texto3;
+	}
+
+	public void SalvaStatus(float pontuacao, float tempoTot){
+
+		//enviadorDeDados.url = urlN + "/Class/Action/UsuarioAC.php?req=1";
+		enviadorDeDados.url = url + "/Class/Action/UsuarioAC.php?req=1";
+		//enviadorDeDados.url = "http://38772c67.ngrok.io/MyProject/VilaAnimal/Class/Action/UsuarioAC.php?req=1";
+
+		if (string.IsNullOrEmpty (url)) {
+			print ("Não existe servidor para envio dos dados!");
+			return;
+		}
+
+		DateTime agora = DateTime.Now;
+		string data = agora.ToString ("dd/MM/yy");
+		print ("Data de captação dos dados "+data);
+
+		DadosSalvar dados = new DadosSalvar();
+		//System.Random random = new System.Random();
+		dados.nickname = PlayerPrefs.GetString("nickName");
+		dados.pontuacao.Add(pontuacao);
+		dados.tempo.Add(tempoTot);
+		dados.data.Add(data);
+
+		enviadorDeDados.GerarJson(dados);
+
 	}
 
 	public void AvisaEstagio(int act, int max){

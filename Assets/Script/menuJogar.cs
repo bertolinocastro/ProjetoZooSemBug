@@ -72,7 +72,7 @@ public class menuJogar : MonoBehaviour {
 	}
 
 	private void checaTutorial(){
-		if (salvador.leMenuPrincipalTutorial ()) {
+		if (/*salvador.leMenuPrincipalTutorial ()*/ salvador.primeiroStart()) {
 			msg = falasTutorial.text.Split (new string[] { "<fala>" }, System.StringSplitOptions.None);
 			desativaTodosBotoes ();
 			placa.SetActive (true);

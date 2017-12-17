@@ -29,8 +29,7 @@ Após acalmar-se, Pôpo disse que iria ajudá-los a ganhar a confiança de seus 
 Os treinadores então lembraram-se de um ancião que tem facilidade em ganhar a confiança dos animais e que também consegue se comunicar com Pôpo pela língua Fu.
 <cena>
 
-Treinadores: Olá, ancião! Precisamos da sua ajuda para resgatar todos os animais.<fala>
-Como você se chama? <input>
+Treinadores: Olá, <usuario>! Precisamos da sua ajuda para resgatar todos os animais.
 <cena>
 
 Treinadores: <usuario>, esse é Pôpo. Ele irá lhe ajudar a ganhar a confiança deles.

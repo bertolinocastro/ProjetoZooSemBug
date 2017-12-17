@@ -28,9 +28,10 @@ public class ranking : MonoBehaviour {
     }
     public void MandarUrl()
     {
-        if(urlD.GetComponent<InputField>().text != "" || urlD.GetComponent<InputField>().text != null)
+		InputField input = urlD.GetComponent<InputField> ();
+		if(!string.IsNullOrEmpty(input.text))
         {
-            string urlN = urlD.GetComponent<InputField>().text;
+			string urlN = input.text;
 
             GetComponent<SalvarDadosScript>().url = urlN + "/Class/Action/UsuarioAC.php?req=1";
 

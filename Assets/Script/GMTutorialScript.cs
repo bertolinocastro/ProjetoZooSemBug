@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class GMTutorialScript : MonoBehaviour {
 
+	public GameObject nickPanelGO;
+	public Button prontoBtn;
+	public Text nickText;
+
 	public RectTransform tutorial;
 
 	private string[] msgInstrutor;
@@ -66,7 +70,17 @@ public class GMTutorialScript : MonoBehaviour {
 		
 		instrutorInit ();
 
+		checaNick ();
+
 		start = Time.time;
+	}
+
+	private void checaNick(){
+		if (!salvador.tutorialJaVisto()) {
+			nickPanelGO.SetActive (true);
+		} else {
+			nick.text = salvador.leNick ();
+		}
 	}
 
 	private void instrutorInit(){
@@ -276,7 +290,7 @@ public class GMTutorialScript : MonoBehaviour {
 	}
 
 	public void skipaTutorial() {
-		int ccena, image, novaCat; char categoria; bool achou = false;
+		/*int ccena, image, novaCat; char categoria; bool achou = false;
 		for(ccena = cenaAct; ccena < msg.Length && !(achou=msg[ccena].Contains("<input>")); ++ccena);
 		if (!achou)
 			return;
@@ -289,13 +303,18 @@ public class GMTutorialScript : MonoBehaviour {
 		idImagens = iniImagensCena[cenaAct];
 		subCenaAct = 99;
 		desativaSkip ();
-		passaTexto ();
+		passaTexto ();*/
+
 		print ("Skipei o Tutorial");
+		finalizaTutorial ();
 	}
 
 	private void finalizaTutorial(){
-		// Carregar scene de início de usabilidade
-		SceneManager.LoadSceneAsync("usabilidade");
+		if (!salvador.tutorialJaVisto())
+			// Carregar scene de início de usabilidade
+			SceneManager.LoadSceneAsync ("usabilidade");
+		else
+			SceneManager.LoadSceneAsync ("menuInicial");
 	}
 
 	private void anteriorCena(){
@@ -361,5 +380,21 @@ public class GMTutorialScript : MonoBehaviour {
 
 	private void desativaSkip(){
 		skipa.SetActive(false);
+	}
+
+	public void finalizaPrimeiroNick(){
+		if (!string.IsNullOrEmpty (nickText.text)) {
+			salvador.nickName (nickText.text);
+			prontoBtn.interactable = true;
+		} else {
+			prontoBtn.interactable = false;
+		}
+
+	}
+
+	public void fechaPrimeiroNick(){
+		nick.text = salvador.leNick ();
+
+		nickPanelGO.SetActive (false);
 	}
 }
