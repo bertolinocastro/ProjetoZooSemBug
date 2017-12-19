@@ -5,7 +5,7 @@ Uma reserva ambiental muito especial.
 Temos diversos animais vivendo conosco como leões, pinguins, girafas, zebras.
 <cena>
 
-Um desses animais é Pôpo, um panda muito inteligente que consegue se comunicar com a linguagem Fu, que é uma mistura de gestos e grunidos.
+Um desses animais é Pôpo, um panda muito inteligente que consegue se comunicar com a linguagem Fu, que é uma mistura de gestos e grunhido.
 <cena>
 
 Todos os dias os treinadores preparam o banho de Pôpo.

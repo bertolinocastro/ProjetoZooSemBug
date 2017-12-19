@@ -133,6 +133,7 @@ public class SalvarDadosScript : MonoBehaviour {
         //teste.text = "";
         Debug.Log("Entrou no Carregar dados");
         Debug.Log("Caminho "+filePath);
+        
         if (File.Exists(filePath))
         {
             dadosCarregados = new DadosSalvar();
@@ -143,17 +144,15 @@ public class SalvarDadosScript : MonoBehaviour {
             DadosSalvar ds =  (DadosSalvar) bf.Deserialize(file);
             file.Close();
 
-            /*
+            
             Debug.Log("Data "+ds.data.Count+"pontuação "+ ds.pontuacao[0]);
             
-            for(int i = 0;i < ds.data.Count; i++)
-            {
-                teste.text += "Nome:" + ds.nickname + " Pontuação:" + ds.pontuacao[i] + " Tempo:" + ds.tempo[i]+"\n";
-            }
-            */
+            
+            
             
             dadosCarregados = ds ;
-        }        
+        }      
+        
     }
 
     public void GerarDados()

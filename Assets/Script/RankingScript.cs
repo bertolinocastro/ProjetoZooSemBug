@@ -34,6 +34,7 @@ public class RankingScript : MonoBehaviour {
         gameManager.GetComponent<SalvarDadosScript>().CarregaDados();
         
         DadosSalvar dadosG = gameManager.GetComponent<SalvarDadosScript>().getDadosCarregados();
+        
         if(dadosG != null)
         {
             int count = dadosG.pontuacao.Count;
@@ -77,7 +78,8 @@ public class RankingScript : MonoBehaviour {
                 }
                 auxPont = auxP;
             }
-        }       
+        }      
+        
         
 
     }
@@ -85,18 +87,20 @@ public class RankingScript : MonoBehaviour {
     public void OrdenaLista()
     {
         gerarGhost();
+        
         if(pontFake.Count > 1)
         {
             pontFake.Sort(delegate (DadosRelatorio x, DadosRelatorio y)
             {
                 return y.getPontuacao().CompareTo(x.getPontuacao());
             });
-        }        
+        }    
     }
 
     public void printaTela()
     {
         OrdenaLista();
+        
         int cont = pontFake.Count;
 
         for (int i = 0; i < cont; i++)
