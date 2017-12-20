@@ -127,8 +127,6 @@ public class MascoteGuiaScript : MonoBehaviour {
 
 		//enviadorDeDados.url = urlN + "/Class/Action/UsuarioAC.php?req=1";
 		enviadorDeDados.url = url + "/Class/Action/UsuarioAC.php?req=1";
-
-		enviadorDeDados.url = "http://cb2f5694.ngrok.io/MyProject/VilaAnimal/Class/Action/UsuarioAC.php?req=1";
 		print ("Enviando dados ao server: " + enviadorDeDados.url);
 
 		if (string.IsNullOrEmpty (url)) {
